@@ -46,7 +46,7 @@ module.exports = {
   		Calle: {
   			type: 'string'
   		},
-  		Municipio{
+  		Municipio: {
   			type: 'string'
   		}
   	}
