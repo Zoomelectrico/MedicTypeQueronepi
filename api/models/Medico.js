@@ -9,6 +9,25 @@ module.exports = {
 
   attributes: {
 
+    id: {
+      type: 'int'
+    },
+    Cedula: {
+      type: 'int'
+    },
+    CDM: {
+      type: 'int'
+    },
+    Nombre: {
+      type: 'string'
+    },
+    Apellido: {
+      type: 'string'
+    },
+    Especialidad:{
+      type: 'string'
+    }
+    
   }
 };
 
