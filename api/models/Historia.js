@@ -8,7 +8,46 @@
 module.exports = {
 
   attributes: {
-
+    id: {
+      type: 'int',
+      primaryKey: true,
+      unique: true,
+      autoIncrement: true,
+      required: true
+    },
+    Tipo: {
+        type: 'string'
+    },
+    Precio: {
+        type: 'float'
+    },
+    Fecha: {
+        type: 'date'
+    },
+    Talla: {
+        type: 'float'
+    }, 
+    Peso: {
+        type: 'float'
+    },
+    FCardiaca:{
+        type: 'int'
+    },
+    Tension: {
+        type: 'string'
+    },
+    FRespiratoria: {
+        type: 'int'
+    },
+    Temperatura: {
+        type: 'float'
+    },
+    Medico: {
+        type: 'int',
+    },
+    paciente: {
+        type: 'int', 
+    }
   }
 };
 
