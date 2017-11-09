@@ -45,10 +45,12 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
+
   'GET /medico-login': 'MedicoController.Login',
   'GET /medico-registro': 'MedicoController.Registrar',
   'GET /medico-home': 'MedicoController.Home',
 
-  'GET /paciento-registro': 'PacienteController.Crear'
+  'GET /paciente-registro': 'PacienteController.Crear',
+  'GET /paciente-login': {view: 'paciente-login'},
 
 };

@@ -7,9 +7,7 @@
 
 module.exports = {
 
-    Login: function(req, res) {
-    	res.view('paciente-login')
-	},
+    
 
     Crear: function(req, res, next, callback) {
 	    var params = req.body;
