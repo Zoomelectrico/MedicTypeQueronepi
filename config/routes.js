@@ -34,7 +34,7 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
 
   /***************************************************************************
   *                                                                          *
@@ -52,5 +52,7 @@ module.exports.routes = {
 
   'GET /paciente-registro': 'PacienteController.Crear',
   'GET /paciente-login': {view: 'paciente-login'},
-
+  'GET /paciente-modificar': 'PacienteController.Modificar',
+  'GET /paciente-eliminar': 'PacienteController.Eliminar',
+  'GET /paciente-update': 'PacienteController.Update'
 };
