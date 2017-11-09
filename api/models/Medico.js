@@ -10,13 +10,19 @@ module.exports = {
   attributes: {
 
     id: {
-      type: 'int'
+      type: 'int',
+      primaryKey: true,
+      unique: true,
+      autoIncrement: true,
+      required: true
     },
     Cedula: {
-      type: 'int'
+      type: 'int',
+      unique : true, 
     },
     CDM: {
-      type: 'int'
+      type: 'int',
+      unique: true, 
     },
     Nombre: {
       type: 'string'
@@ -27,7 +33,7 @@ module.exports = {
     Especialidad:{
       type: 'string'
     }
-    
+
   }
 };
 
