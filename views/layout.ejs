@@ -5,29 +5,43 @@
   <meta charset="utf-8">
   <title>MedicType</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
   <!--STYLES-->
   <link rel="stylesheet" href="/styles/importer.css">
+  <link rel="stylesheet" href="/styles/main.css">
   <!--STYLES END-->
 </head>
-<header id="header" class="">
-  
+<header>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo center accent">MedicType</a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a href="#">Médicos</a></li>
+        <li><a href="#">Pacientes</a></li>
+      </ul>
+    </div>
+  </nav>
 </header>
+
 <body>
   <div class="container">
     <%- body %>
   </div>
-    <!--TEMPLATES-->
-    <!--TEMPLATES END-->
-    <footer>
-      
-    </footer>
-    <!--SCRIPTS-->
-    <script src="/js/dependencies/sails.io.js"></script>
-    <!--SCRIPTS END-->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  <!--TEMPLATES-->
+  <!--TEMPLATES END-->
+  <footer class="page-footer">
+    <div class="footer-copyright">
+      <div class="container">
+        © 2017 MedicType by Queronepi.
+      </div>
+    </div>
+  </footer>
+  <!--SCRIPTS-->
+  <script src="/js/dependencies/sails.io.js"></script>
+  <script src="/js/main.js"></script>
+  <!--SCRIPTS END-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </body>
 
 </html>
