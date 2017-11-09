@@ -8,7 +8,14 @@
 module.exports = {
 
   attributes: {
-
+  	Nombre: {
+  		type: 'string'
+  	},
+  	Codigo:{
+  		type: 'int',
+  		unique: true,
+  		autoIncrement: true
+  	}
   }
 };
 
