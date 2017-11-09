@@ -6,22 +6,22 @@
  */
 
 module.exports = {
-
+  connection: 'connection',
+    tableName: 'medico',
   attributes: {
-
     id: {
-      type: 'int',
+      type: 'integer',
       primaryKey: true,
       unique: true,
       autoIncrement: true,
       required: true
     },
     Cedula: {
-      type: 'int',
+      type: 'integer',
       unique : true, 
     },
     CDM: {
-      type: 'int',
+      type: 'integer',
       unique: true, 
     },
     Nombre: {
@@ -33,7 +33,10 @@ module.exports = {
     Especialidad:{
       type: 'string'
     }
-
-  }
-};
+  },
+    migrate: 'safe',
+    autoPK: false,
+    autoCreatedAt: false,
+    autoUpdatedAt: false
+  };
 

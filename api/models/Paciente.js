@@ -6,11 +6,9 @@
  */
 
 module.exports = {
-
+	connection: 'connection',
+    tableName: 'paciente',
   attributes: {
-    connection: 'connection',
-    tableName: 'Paciente',
-    attributes: {
       id: {
         type: 'integer',
         primaryKey: true,
@@ -37,7 +35,7 @@ module.exports = {
       TSangre: {
         type: 'string'
       },
-      Apto: {
+      NAptoCasa: {
         type: 'string'
       },
       Urbanizacion: {
@@ -46,13 +44,15 @@ module.exports = {
       Calle: {
         type: 'string'
       },
-      Municipio: {
+      /*Municipio: {
         type: 'string'
+      }*/
+      Ciudad: {
+      	type: 'string'
       }
     },
-    migrate: 'safe',
-    autoPK: true,
-    autoCreatedAt: false,
-    autoUpdatedAt: false
-  }
-};
+	  migrate: 'safe',
+	  autoPK: false,
+	  autoCreatedAt: false,
+	  autoUpdatedAt: false
+  };

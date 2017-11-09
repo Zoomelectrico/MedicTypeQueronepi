@@ -6,16 +6,22 @@
  */
 
 module.exports = {
-
-  attributes: {
-  	Nombre: {
-  		type: 'string'
-  	},
-  	Codigo:{
-  		type: 'int',
-  		unique: true,
-  		autoIncrement: true
-  	}
-  }
+	connection: 'connection',
+    tableName: 'medicamento',
+	  attributes: {
+	  	id:{
+	  		type: 'int',
+	  		unique: true,
+	  		autoIncrement: true
+	  	},
+	  	Nombre: {
+	  		type: 'string'
+	  	}
+	  	
+	  },
+	  migrate: 'safe',
+	  autoPK: false,
+	  autoCreatedAt: false,
+	  autoUpdatedAt: false
 };
 
