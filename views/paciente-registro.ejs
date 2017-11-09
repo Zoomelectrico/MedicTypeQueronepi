@@ -1,1 +1,68 @@
-paciente-registro.ejs
+<div class="banner">
+	<div class="row">
+		<div class="col m12 valign-wrapper">
+			<h4 class="white-text vertical-align">Área de Registro para pacientes</h4>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<form class="row" method="POST" action="">
+		<div class="col m12">
+			<div class="row">
+				<div class="col m6 input-field">
+					<input placeholder="Pedro" id="Nombre" name="Nombre" type="text" class="validate">
+          			<label for="Nombre">Nombre</label>
+				</div>
+				<div class="col m6 input-field">
+					<input placeholder="Perez" id="Apellido" name="Apellido" type="text" class="validate">
+          			<label for="Apellido">Apellido</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col m6 input-field">
+					<input placeholder="12345678" id="Cedula" name="Cedula" type="text" class="validate">
+          			<label for="Cedula">Cédula</label>
+				</div>
+				<div class="col m6 input-field">
+					<input type="text" class="datepicker" name="FNacimiento">
+          			<label for="FNacimiento">Fecha de Nacimiento</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col m6 input-field">
+					<input placeholder="Masculino" id="Sexo" name="Sexo" type="text" class="validate">
+          			<label for="Sexo">Sexo</label>
+				</div>
+				<div class="col m6 input-field">
+					<input placeholder="AB RH+" id="TSangre" name="TSangre" type="text" class="validate">
+          			<label for="TSangre">Tipo de Sangre</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col m6 input-field">
+					<input placeholder="Apto 12 Edif. Hola" id="Apto" name="Apto" type="text" class="validate">
+          			<label for="Apto">Numero de Apartamento o Casa</label>
+				</div>
+				<div class="col m6 input-field">
+					<input placeholder="La Urbina" id="Urbanizacion" name="Urbanizacion" type="text" class="validate">
+          			<label for="Urbanizacion">Urbanización</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col m6 input-field">
+					<input placeholder="Calle 12" id="Calle" name="Calle" type="text" class="validate">
+          			<label for="Calle">Calle o Avenida</label>
+				</div>
+				<div class="col m6 input-field">
+					<input placeholder="Caracas" id="Municipio" name="Municipio" type="text" class="validate">
+          			<label for="Municipio">Municipio o Ciudad</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col m12 center">
+					<button class="waves-effect waves-light btn blue darken-1" type="submit">Registrar</button>
+				</div>
+			</div>
+		</div>
+	</form> 
+</div>

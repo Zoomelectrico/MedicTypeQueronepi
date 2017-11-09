@@ -21,27 +21,21 @@ main {
 }
 
 div#index-main {
+  width: 100%;
+  height: 100%;
   padding-top: 100px; 
   background-image: url(../images/background.JPEG);
   background-repeat: no-repeat;
   background-size: 100% auto;
   z-index: 1;
 }
-div#header-doctor {
+
+div.banner {
   width: 100%;
   height: 200px;
   background-image: url(../images/background-medico.JPEG);
   background-repeat: no-repeat;
   background-size: 100% auto;
   z-index: 1;
-  display: flex;  
-}
-div#header-registrar {
-  width: 100%;
-  height: 200px;
-  background-image: url(../images/background-medico.JPEG);
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-  z-index: 1;
-  display: flex;  
+  display: flex;
 }

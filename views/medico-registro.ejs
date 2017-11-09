@@ -1,1 +1,44 @@
-medico-registro.ejs
+<div class="banner">
+	<div class="row">
+		<div class="col m12 valign-wrapper">
+			<h4 class="white-text vertical-align">Área de Registro para Médicos</h4>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<form class="row" method="POST" action="">
+		<div class="col m12">
+			<div class="row">
+				<div class="col m6 input-field">
+					<input placeholder="Pedro" id="Nombre" name="Nombre" type="text" class="validate">
+          			<label for="Nombre">Nombre</label>
+				</div>
+				<div class="col m6 input-field">
+					<input placeholder="Perez" id="Apellido" name="Apellido" type="text" class="validate">
+          			<label for="Apellido">Apellido</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col m6 input-field">
+					<input placeholder="12345678" id="Cedula" name="Cedula" type="text" class="validate">
+          			<label for="Cedula">Cédula</label>
+				</div>
+				<div class="col m6 input-field">
+					<input placeholder="98765432" id="CDM" name="CDM" type="text" class="validate">
+          			<label for="CDM">Registro en el Colegio de Médicos:</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col m6 input-field">
+					<input placeholder="Cirujano" id="Especialidad" name="Especialidad" type="text" class="validate">
+          			<label for="Especialidad">Especialidad</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col m12 center">
+					<button class="waves-effect waves-light btn blue darken-1" type="submit">Registrar</button>
+				</div>
+			</div>
+		</div>
+	</form> 
+</div>
