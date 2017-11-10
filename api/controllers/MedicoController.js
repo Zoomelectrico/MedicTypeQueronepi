@@ -17,13 +17,11 @@ module.exports = {
     Medico.findOne({ Cedula: req.body.cedula }).exec(function(err, doc) {
       if (err) { return res.badRequest({ error: err }) }
       Consulta.query(
-        'SELECT Paciente.Apellido, Paciente.Nombre' +
-        'From historia INNER JOIN medico on historia.Medico = medico.id' + ' ' +
-        'INNER JOIN paciente on paciente.id = historia.Paciente Where medico.id =' + doc.id + ' AND historia.fecha = ' + '\'' + new Date().getFullYear() + '-' + new Date().getMonth() + '-' + new Date().getDate()+ '\'',
+        'SELECT paciente.Apellido, paciente.Nombre FROM consulta INNER JOIN medico on consulta.Medico = medico.id INNER JOIN paciente ON paciente.id = consulta.Paciente WHERE medico.id =' + doc.id +'AND consulta.Fecha = ' '\''+Date.now() ,
         function(err, rawResult) {
           if (err) { return res.serverError(err); }
-          var pacientes = rawResult.json();
-          res.view('medico-panel', { doctor: doc, pacientes: pacientes });
+          //var pacientes = rawResult.json();
+          res.view('medico-panel', { medico: doc, pacientes: rawResult/*pacientes*/ });
         })
     });
   }
