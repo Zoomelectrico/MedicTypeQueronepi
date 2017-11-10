@@ -7,8 +7,8 @@
 
 module.exports = {
   Crear: function(req, res, next, callback) {
-    var params = req.body;
-    Paciente.create(params, function(err, createdData) {
+    var body = req.body;
+    Paciente.create(body, function(err, createdData) {
       if (err) {
         return res.badRequest({ error: err });
       } else {
@@ -29,7 +29,7 @@ module.exports = {
   },
 
   Modificar: function(req, res) {
-    Paciente.findOne({ id: req.params.id }).exec(function(err, paciente) {
+    Paciente.findOne({ id: req.body.id }).exec(function(err, paciente) {
       if (err) {
         res.send(500, { error: err });
       }
@@ -38,7 +38,7 @@ module.exports = {
   },
 
   Eliminar: function(req, res) {
-    Paciente.destroy({ id: req.params.id }).exec(function(err) {
+    Paciente.destroy({ id: req.body.id }).exec(function(err) {
       if (err) {
         res.send(500, { error: err });
       }
@@ -48,7 +48,7 @@ module.exports = {
   },
 
   Update: function(req, res) {
-    Paciente.update({ id: req.params.id }, { Nombre: req.body.Nombre, Apellido: req.body.Apellido, Sexo: req.body.Sexo, TSangre: req.body.TSangre, FNacimiento: req.body.FNacimiento, NAptoCasa: req.body.NAptoCasa, Calle: req.body.Calle, Ciudad: req.body.Ciudad }, function(err, createdData) {
+    Paciente.update({ id: req.body.id }, { Nombre: req.body.Nombre, Apellido: req.body.Apellido, Sexo: req.body.Sexo, TSangre: req.body.TSangre, FNacimiento: req.body.FNacimiento, NAptoCasa: req.body.NAptoCasa, Calle: req.body.Calle, Ciudad: req.body.Ciudad }, function(err, createdData) {
       if (err) {
         console.log("nonononononn");
         return res.badRequest({ error: err });
