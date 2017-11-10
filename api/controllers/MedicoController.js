@@ -17,7 +17,7 @@ module.exports = {
 	    });
   	},
   	Home: function(req, res) {
-	    Medico.findOne({ cedula: req.body.cedula }).exec(function(err, doc) {
+	    Medico.findOne({ Cedula: req.body.cedula }).exec(function(err, doc) {
 	      if (err) { return res.badRequest({ error: err }) }
 	      Consulta.query(
 	        'SELECT Paciente.Apellido, Paciente.Nombre' +
@@ -29,10 +29,7 @@ module.exports = {
 	          res.view('medico-panel', { doctor: doc, paciente: paciente });
 	        });
 	    })
-	  },
-	  
-	  Consulta: function(req, res) {
-
 	  }
+	  
 };
 

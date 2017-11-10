@@ -6,9 +6,6 @@
  */
 
 module.exports = {
-
-    
-
     Crear: function(req, res, next, callback) {
 	    var params = req.body;
 	    Paciente.create(params, function(err, createdData) {

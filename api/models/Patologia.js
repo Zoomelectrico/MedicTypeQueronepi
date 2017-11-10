@@ -6,7 +6,8 @@
  */
 
 module.exports = {
-
+  connection: 'connection',
+  tableName: 'patologia',
   attributes: {
     id: {
       type: 'int',
@@ -19,6 +20,10 @@ module.exports = {
       type: 'string',
       unique: true, 
     }
-  }
+  },
+    migrate: 'safe',
+    autoPK: false,
+    autoCreatedAt: false,
+    autoUpdatedAt: false
 };
 
