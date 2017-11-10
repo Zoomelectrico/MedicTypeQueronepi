@@ -1,1 +1,155 @@
-medico-consulta.ejs
+<div class="banner">
+  <div class="col m12 valign-wrapper">
+    <h4 class="vertical-align white-text">Consulta del Dr. <%= medico.Nombre+' '+medico.Apellido%></h4>
+  </div>
+</div>
+<form method="POST" action="" class="container">
+  <div class="row card-panel">
+    <div class="col m12">
+      <div class="row">
+        <div class="col m12">
+          <h6 class="center">Datos de Paciente</h6></div>
+      </div>
+      <div class="row">
+        <div class="col m6 center">
+          <p>
+            Nombre:
+            <br>
+            <%=paciente.Nombre +' '+ paciente.Apellido %>
+          </p>
+        </div>
+        <div class="col m6 center">
+          <p>
+            Edad:
+            <br>
+            <% var c = new Date( paciente.FNacimiento - Date.now()); %>
+              <% var d = c.getFullYear() - 1970; %>
+                <%= d %>
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col m6">
+          <p>Tipo de Sangre:
+            <br>
+            <%= paciente.TSangre%>
+          </p>
+        </div>
+        <div class="col m6">
+          <p>
+            Dirección:
+            <br>
+            <%= paciente.Apto +' '+paciente.Urbanizacion%>
+              <br>
+              <%= paciente.Calle +' '+paciente.Ciudad%>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row card-panel">
+    <div class="col m12">
+      <div class="row">
+        <div class="col m12">
+          <h5 class="center">Condición actual del paciente</h5></div>
+      </div>
+      <div class="row">
+        <div class="col m12">
+          <div class="row">
+            <div class="col m6 input-field">
+              <input placeholder="120" name="Peso" type="text" class="validate">
+              <label for="Peso">Peso (Kg)</label>
+            </div>
+            <div class="col m6 input-field">
+              <input placeholder="1.80" name="Talla" type="text" class="validate">
+              <label for="Talla">Talla (m)</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col m6 input-field">
+              <input placeholder="120" name="Tension" type="text" class="validate">
+              <label for="Tension">Tension Arterial</label>
+            </div>
+            <div class="col m6 input-field">
+              <input placeholder="37.5" name="Temperatura" type="text" class="validate">
+              <label for="Temperatura">Temperatura(°C)</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col m6 input-field">
+              <input placeholder="13" name="FRespiratoria" type="text" class="validate">
+              <label for="FRespiratoria">Frecuencia Respiratoria(N por min)</label>
+            </div>
+            <div class="col m6 input-field">
+              <input placeholder="120/80" name="FCardiaca" type="text" class="validate">
+              <label for="FCardiaca">Frecuencia Cardiaca</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row card-panel">
+    <div class="col m12">
+      <div class="row">
+        <div class="col m12">
+          <h5 class="center">Datos del Diagnostico</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col m12">
+          <div class="row">
+            <div class="col m6 input-field">
+              <select id="listaPatologias">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+              </select>
+              <label>Patologia Diagnosticada</label>
+            </div>
+            <div class="col m6 input-field">
+              <input placeholder="Cefalea" id="newPatologia" type="text" class="validate">
+              <label for="newPatologia">Otra Patologia</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col m6 input-field">
+              <select id="listaPatologias" multiple>
+                <option value="" disabled selected>Choose your option</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+              </select>
+              <label>Medicamentos</label>
+            </div>
+            <div class="col m6">
+              <a class="waves-effect waves-light btn blue darken-1" href="#NMedicamento">Nuevo Medicamento</a>
+              <form id="NMedicamento" class="modal" method="POST" action="">
+                <div class="modal-content input-field">
+                  <h4>Añadir un Nuevo Medicamento</h4>
+                  <input placeholder="120" name="NombreComercial" type="text" class="validate">
+                  <label for="NombreComercial">Nombre Comercial del Medicamento</label>
+                </div>
+                <div class="modal-footer center">
+                  <button href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</button>
+                </div>
+                <form>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col m12 input-field">
+              <textarea id="indicaciones" class="materialize-textarea"></textarea>
+              <label for="indicaciones">Indicaciones</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row card-panel">
+    <div class="col m12">
+      <button class="waves-effect waves-light btn blue darken-1" type="submit">Guardar</button>
+    </div>
+  </div>
+  </form>
