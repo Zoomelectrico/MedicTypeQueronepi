@@ -17,7 +17,7 @@ module.exports = {
     Medico.findOne({ Cedula: req.body.cedula }).exec(function(err, doc) {
       if (err) { return res.badRequest({ error: err }) }
       Consulta.query(
-        'SELECT paciente.Apellido, paciente.Nombre FROM consulta INNER JOIN medico on consulta.Medico = medico.id INNER JOIN paciente ON paciente.id = consulta.Paciente WHERE medico.id =' + doc.id +'AND consulta.Fecha = ' '\''+Date.now().getFullYear()+'-'+Date.now().getMonth()+'-'+Date.now().getDay()+'\'',
+        'SELECT paciente.Apellido, paciente.Nombre FROM consulta INNER JOIN medico on consulta.Medico = medico.id INNER JOIN paciente ON paciente.id = consulta.Paciente WHERE medico.id =' + doc.id +'AND consulta.Fecha = ' + '\''+Date.now().getFullYear()+'-'+Date.now().getMonth()+'-'+Date.now().getDay()+'\'',
         function(err, rawResult) {
           if (err) { return res.serverError(err); }
           res.view('medico-panel', { medico: doc, pacientes: rawResult});
