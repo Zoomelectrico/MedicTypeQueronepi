@@ -1,6 +1,7 @@
+$(document).ready(function() {
   $('.datepicker').pickadate({
     selectMonths: true,
-    selectYears: 1000, 
+    selectYears: 1000,
     today: 'Today',
     clear: 'Clear',
     close: 'Ok',
@@ -11,4 +12,5 @@
   $('.fixed-action-btn').closeFAB();
   $('.fixed-action-btn.toolbar').openToolbar();
   $('.fixed-action-btn.toolbar').closeToolbar();
-        
+  $('.collapsible').collapsible();
+});
