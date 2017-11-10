@@ -1,7 +1,7 @@
 /**
  * PacienteController
  *
- * @description :: Server-side logic for managing Pacientes
+ * @description :: Server-scedulae logic for managing Pacientes
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
@@ -29,7 +29,7 @@ module.exports = {
   },
 
   Modificar: function(req, res) {
-    Paciente.findOne({ id: req.body.id }).exec(function(err, paciente) {
+    Paciente.findOne({ cedula: req.body.cedula }).exec(function(err, paciente) {
       if (err) {
         res.send(500, { error: err });
       }
@@ -38,7 +38,7 @@ module.exports = {
   },
 
   Eliminar: function(req, res) {
-    Paciente.destroy({ id: req.body.id }).exec(function(err) {
+    Paciente.destroy({ cedula: req.body.cedula }).exec(function(err) {
       if (err) {
         res.send(500, { error: err });
       }
@@ -48,7 +48,7 @@ module.exports = {
   },
 
   Update: function(req, res) {
-    Paciente.update({ id: req.body.id }, { Nombre: req.body.Nombre, Apellido: req.body.Apellido, Sexo: req.body.Sexo, TSangre: req.body.TSangre, FNacimiento: req.body.FNacimiento, NAptoCasa: req.body.NAptoCasa, Calle: req.body.Calle, Ciudad: req.body.Ciudad }, function(err, createdData) {
+    Paciente.update({ cedula: req.body.cedula }, { Nombre: req.body.Nombre, Apellcedulao: req.body.Apellcedulao, Sexo: req.body.Sexo, TSangre: req.body.TSangre, FNacimiento: req.body.FNacimiento, NAptoCasa: req.body.NAptoCasa, Calle: req.body.Calle, Ciudad: req.body.Ciudad }, function(err, createdData) {
       if (err) {
         console.log("nonononononn");
         return res.badRequest({ error: err });
