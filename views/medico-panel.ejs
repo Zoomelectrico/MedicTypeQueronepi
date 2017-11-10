@@ -7,9 +7,9 @@
 </div>
 <div class="container">
   <div class="row card-panel">
-  	<div class="col m12">
-			<h3 class="center">Lista de Pacientes</h3>
-		</div>
+    <div class="col m12">
+      <h3 class="center">Lista de Pacientes</h3>
+    </div>
     <div class="col m12">
       <table>
         <thead>
@@ -22,13 +22,17 @@
         </thead>
         <tbody>
           <% pacientes.forEach(function (paciente) { %>
-          	<tr>
-          		<td><%= paciente.Cedula %></td>
-          		<td><%= paciente.Nombre +' '+ paciente.Apellido %></td>
-          		<td></td>
-          		<td></td>
-          	</tr>
-          <%})%>
+            <tr>
+              <td>
+                <%= paciente.Cedula %>
+              </td>
+              <td>
+                <%= paciente.Nombre +' '+ paciente.Apellido %>
+              </td>
+              <td></td>
+              <td></td>
+            </tr>
+            <%})%>
         </tbody>
       </table>
     </div>
@@ -38,8 +42,24 @@
       <i class="large material-icons">mode_edit</i>
     </a>
     <ul>
-      <li><a class="btn-floating green"><i class="material-icons">person</i></a></li>
-      <li><a class="btn-floating yellow"><i class="material-icons">search</i></a></li>
+      <li><a class="btn-floating green" href="/Paciente/Registro"><i class="material-icons">person</i></a></li>
+      <li><a class="btn-floating yellow modal-trigger" href="modalBuscar"><i class="material-icons">search</i></a></li>
     </ul>
   </div>
 </div>
+<form id="modalBuscar" class="modal" action="" method="POST">
+  <div class="modal-content">
+    <div class="row">
+      <h5 class="center">Buscar Paciente por Numero de Cedula</h5>
+    </div>
+    <div class="row">
+      <div class="col m12 input-field">
+        <input placeholder="12345678" name="cedula" type="text" class="validate">
+        <label for="name">Cédula de Identidad</label>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" type="submmit">Buscar</button>
+  </div>
+</form>
