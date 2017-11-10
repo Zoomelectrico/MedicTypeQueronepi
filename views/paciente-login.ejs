@@ -9,7 +9,7 @@
   <div class="row">
     <div class="col m3"></div>
     <div class="col m6">
-      <form class="row" method="POST" action="">
+      <form class="row" method="POST" action="/Paciente/Modificar" name="formpaciente">
         <div class="col m12 card-panel">
           <div class="row">
             <div class="col m12 input-field">
@@ -19,10 +19,10 @@
           </div>
           <div class="row center">
             <div class="col m6">
-              <button class="waves-effect waves-light btn blue darken-1" type="submit">Historia Médica</button>
+              <button class="waves-effect waves-light btn blue darken-1" type="submit" id="HM">Historia Médica</button>
             </div>
             <div class="col m6">
-            	<button class="waves-effect waves-light btn blue darken-1" type="submit">Modificar Datos</button>
+            	<button class="waves-effect waves-light btn blue darken-1" type="submit" id="MD">Modificar Datos</button>
             </div>
           </div>
         </div>
@@ -31,3 +31,13 @@
     <div class="col m3"></div>
   </div>
 </div>
+<script type="text/javascript">
+  document.getElementById('HM').addEventListener(click, historiaMedica);
+  document.getElementById('MD').addEventListener(click, modificarDatos);
+  function ModificarDatos () {
+    document.formpaciente.action = '/Paciente/Modificar'
+  }
+  function historiaMedica () {
+    document.formpaciente.action = '/Paciente/Informes'
+  }
+</script>
