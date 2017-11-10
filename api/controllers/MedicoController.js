@@ -19,7 +19,7 @@ module.exports = {
       Consulta.query(
         'SELECT Paciente.Apellido, Paciente.Nombre' +
         'From historia INNER JOIN medico on historia.Medico = medico.id' + ' ' +
-        'INNER JOIN paciente on paciente.id = historia.Paciente Where medico.id =' + doc.body.id + ' AND historia.fecha =' + new Date().getFullYear() + '-' + new Date().getMonth() + '-' + new Date().getDate(),
+        'INNER JOIN paciente on paciente.id = historia.Paciente Where medico.id =' + doc.id + ' AND historia.fecha = ' + '\'' + new Date().getFullYear() + '-' + new Date().getMonth() + '-' + new Date().getDate()+ '\'',
         function(err, rawResult) {
           if (err) { return res.serverError(err); }
           var pacientes = rawResult.json();
