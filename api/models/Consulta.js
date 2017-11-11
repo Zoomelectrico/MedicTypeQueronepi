@@ -13,8 +13,7 @@ module.exports = {
       type: 'int',
       primaryKey: true,
       unique: true,
-      autoIncrement: true,
-      required: true
+      autoIncrement: true
     },
     Tipo: {
         type: 'string'

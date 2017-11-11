@@ -29,9 +29,9 @@ module.exports = {
   },
 
   Modificar: function(req, res) {
-    Paciente.findOne({ cedula: req.body.cedula }).exec(function(err, paciente) {
+    Paciente.findOne({ Cedula: req.body.Cedula }).exec(function(err, paciente) {
       if (err) {
-        res.send(500, { error: err });
+        return res.badRequest({ error: err });
       }
       res.view('paciente-modificar', { Paciente: paciente });
     });
