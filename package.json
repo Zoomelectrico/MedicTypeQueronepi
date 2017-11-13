@@ -1,8 +1,12 @@
 {
   "name": "MedicTypeQueronepi",
   "private": true,
-  "version": "0.0.0",
-  "description": "a Sails application",
+  "version": "0.0.2",
+  "description": "Database Project",
+  "engines": {
+    "node": "8.4.x",
+    "npm": "5.5.x"
+  },
   "keywords": [],
   "dependencies": {
     "ejs": "2.3.4",
