@@ -29,7 +29,7 @@ module.exports = {
         type: 'date'
       },
       Sexo: {
-        type: 'char'
+        type: 'string'
       },
       TSangre: {
         type: 'string'
