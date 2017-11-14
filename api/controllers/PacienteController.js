@@ -12,7 +12,8 @@ module.exports = {
       if (err) {
         return res.badRequest({ error: err });
       } else {
-        res.view('paciente-modificar', { Paciente: createdData });
+        console.log(createdData);
+        res.view('homepage');
       }
     });
   },
