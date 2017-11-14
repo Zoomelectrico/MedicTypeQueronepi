@@ -3,7 +3,7 @@
     <h4 class="vertical-align white-text">Consulta del Dr. <%= medico.Nombre+' '+medico.Apellido%></h4>
   </div>
 </div>
-<form method="POST" action="" class="container">
+<form method="POST" action="/Consulta/Crear" class="container">
   <div class="row card-panel">
     <div class="col m12">
       <div class="row">
@@ -57,31 +57,31 @@
         <div class="col m12">
           <div class="row">
             <div class="col m6 input-field">
-              <input placeholder="120" name="Peso" type="text" class="validate">
+              <input placeholder="120" name="Peso" id="Peso" type="text" class="validate">
               <label for="Peso">Peso (Kg)</label>
             </div>
             <div class="col m6 input-field">
-              <input placeholder="1.80" name="Talla" type="text" class="validate">
+              <input placeholder="1.80" name="Talla" id="Talla" type="text" class="validate">
               <label for="Talla">Talla (m)</label>
             </div>
           </div>
           <div class="row">
             <div class="col m6 input-field">
-              <input placeholder="120" name="Tension" type="text" class="validate">
+              <input placeholder="120" name="Tension" id="Tension" type="text" class="validate">
               <label for="Tension">Tension Arterial</label>
             </div>
             <div class="col m6 input-field">
-              <input placeholder="37.5" name="Temperatura" type="text" class="validate">
+              <input placeholder="37.5" name="Temperatura" id="Temperatura" type="text" class="validate">
               <label for="Temperatura">Temperatura(°C)</label>
             </div>
           </div>
           <div class="row">
             <div class="col m6 input-field">
-              <input placeholder="13" name="FRespiratoria" type="text" class="validate">
+              <input placeholder="13" name="FRespiratoria" id="FRespiratoria" type="text" class="validate">
               <label for="FRespiratoria">Frecuencia Respiratoria(N por min)</label>
             </div>
             <div class="col m6 input-field">
-              <input placeholder="120/80" name="FCardiaca" type="text" class="validate">
+              <input placeholder="120/80" name="FCardiaca" id="FCardiaca" type="text" class="validate">
               <label for="FCardiaca">Frecuencia Cardiaca</label>
             </div>
           </div>
