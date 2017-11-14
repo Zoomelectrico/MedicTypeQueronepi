@@ -6,9 +6,9 @@
  */
 
 module.exports = {
-  Crear: function(req, res, next, callback) {
+  Crear: function (req, res, next, callback) {
     var body = req.body;
-    Paciente.create(body, function(err, createdData) {
+    Paciente.create(body, function (err, createdData) {
       if (err) {
         return res.badRequest({ error: err });
       } else {
@@ -17,9 +17,9 @@ module.exports = {
     });
   },
 
-  BuscarPorCedula: function(req, res, next, callback) {
+  BuscarPorCedula: function (req, res, next, callback) {
     var ced = req.body;
-    Paciente.findOne(ced, function(err, createdData) {
+    Paciente.findOne(ced, function (err, createdData) {
       if (err) {
         return res.badRequest({ error: err });
       } else {
@@ -28,34 +28,36 @@ module.exports = {
     });
   },
 
-  Modificar: function(req, res) {
-    Paciente.findOne({ Cedula: req.body.Cedula }).exec(function(err, paciente) {
+  Modificar: function (req, res) {
+    Paciente.findOne({ Cedula: req.body.cedula }).exec(function (err, paciente) {
       if (err) {
         return res.badRequest({ error: err });
       }
+      console.log(paciente);
       res.view('paciente-modificar', { Paciente: paciente });
     });
   },
 
-  Eliminar: function(req, res) {
-    Paciente.destroy({ cedula: req.body.cedula }).exec(function(err) {
+  Update: function (req, res) {
+    Paciente.update({ id: req.params.id }, { Nombre: req.body.Nombre, Apellido: req.body.Apellido, Sexo: req.body.Sexo, TSangre: req.body.TSangre, FNacimiento: req.body.FNacimiento, NAptoCasa: req.body.NAptoCasa, Calle: req.body.Calle, Ciudad: req.body.Ciudad }, function (err, createdData) {
+      if (err) {
+        console.log("nonononononn");
+        return res.badRequest({ error: err });
+      } else {
+        console.log(createdData);
+        res.view('homepage');
+      }
+    });
+  },
+
+  Eliminar: function (req, res) {
+    Paciente.destroy({ cedula: req.body.cedula }).exec(function (err) {
       if (err) {
         res.send(500, { error: err });
       }
       res.redirect('/paciente-home');
     });
     return false;
-  },
-
-  Update: function(req, res) {
-    Paciente.update({ cedula: req.body.cedula }, { Nombre: req.body.Nombre, Apellcedulao: req.body.Apellcedulao, Sexo: req.body.Sexo, TSangre: req.body.TSangre, FNacimiento: req.body.FNacimiento, NAptoCasa: req.body.NAptoCasa, Calle: req.body.Calle, Ciudad: req.body.Ciudad }, function(err, createdData) {
-      if (err) {
-        console.log("nonononononn");
-        return res.badRequest({ error: err });
-      } else {
-        console.log(createdData);
-        res.view('registrado', { Paciente: createdData[0] });
-      }
-    });
   }
+
 };

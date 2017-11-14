@@ -1,26 +1,26 @@
 <div class="banner">
 	<div class="row">
 		<div class="col m12 valign-wrapper">
-			<h4 class="white-text vertical-align">Datos del Sr(a). <%= paciente.Apellido%></h4>
+			<h4 class="white-text vertical-align">Datos del Sr(a). <%= Paciente.Apellido%></h4>
 		</div>
 	</div>
 </div>
 <div class="container">
-	<form class="row" method="POST" action="">
+	<form class="row" method="POST" action="/Paciente/Update/<%= Paciente.id %>">
 		<div class="col m12 card-panel">
 			<div class="row">
 				<div class="col m6 input-field">
-					<input placeholder="Pedro" id="Nombre" name="Nombre" type="text" class="validate">
+					<input value="<%= Paciente.Nombre %>" id="Nombre" name="Nombre" type="text" class="validate">
           			<label for="Nombre">Nombre</label>
 				</div>
 				<div class="col m6 input-field">
-					<input placeholder="Perez" id="Apellido" name="Apellido" type="text" class="validate">
+					<input value="<%= Paciente.Apellido %>" id="Apellido" name="Apellido" type="text" class="validate">
           			<label for="Apellido">Apellido</label>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col m6 input-field">
-					<input placeholder="12345678" id="Cedula" name="Cedula" type="text" class="validate">
+					<input value="<%= Paciente.Cedula %>" id="Cedula" name="Cedula" type="text" class="validate">
           			<label for="Cedula">Cédula</label>
 				</div>
 				<div class="col m6 input-field">
@@ -30,31 +30,31 @@
 			</div>
 			<div class="row">
 				<div class="col m6 input-field">
-					<input placeholder="Masculino" id="Sexo" name="Sexo" type="text" class="validate">
+					<input value="<%= Paciente.Sexo %>" id="Sexo" name="Sexo" type="text" class="validate">
           			<label for="Sexo">Sexo</label>
 				</div>
 				<div class="col m6 input-field">
-					<input placeholder="AB RH+" id="TSangre" name="TSangre" type="text" class="validate">
+					<input value="<%= Paciente.TSangre %>" id="TSangre" name="TSangre" type="text" class="validate">
           			<label for="TSangre">Tipo de Sangre</label>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col m6 input-field">
-					<input placeholder="Apto 12 Edif. Hola" id="Apto" name="Apto" type="text" class="validate">
+					<input value="<%= Paciente.NAptoCasa %>" id="Apto" name="Apto" type="text" class="validate">
           			<label for="Apto">Numero de Apartamento o Casa</label>
 				</div>
 				<div class="col m6 input-field">
-					<input placeholder="La Urbina" id="Urbanizacion" name="Urbanizacion" type="text" class="validate">
+					<input value="<%= Paciente.Urbanizacion %>" id="Urbanizacion" name="Urbanizacion" type="text" class="validate">
           			<label for="Urbanizacion">Urbanización</label>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col m6 input-field">
-					<input placeholder="Calle 12" id="Calle" name="Calle" type="text" class="validate">
+					<input value="<%= Paciente.Calle %>" id="Calle" name="Calle" type="text" class="validate">
           			<label for="Calle">Calle o Avenida</label>
 				</div>
 				<div class="col m6 input-field">
-					<input placeholder="Caracas" id="Municipio" name="Municipio" type="text" class="validate">
+					<input value="<%= Paciente.Ciudad %>" id="Municipio" name="Ciudad" type="text" class="validate">
           			<label for="Municipio">Municipio o Ciudad</label>
 				</div>
 			</div>
