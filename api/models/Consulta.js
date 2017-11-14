@@ -7,7 +7,7 @@
 
 module.exports = {
 	connection: 'connection',
-	tableName: 'historia',
+	tableName: 'consulta',
   attributes: {
     id: {
       type: 'int',

@@ -10,8 +10,9 @@ module.exports.routes = {
 
   'GET /Paciente/Registro': {view:'paciente-registro'},
   'POST /Paciente/Registro': 'PacienteController.Crear',
-  'GET /Paciente/login': {view: 'paciente-login'},
+  'GET /Paciente/Login': {view: 'paciente-login'},
   'GET /Paciente/Modificar': 'PacienteController.Modificar',
   // 'POST /Paciente/Informes': PacienteController.Informes,
-  'POST /Paciente/Modificar': 'PacienteController.Update'
+  'POST /Paciente/Modificar': 'PacienteController.Modificar',
+  'POST /Paciente/Update/:id': 'PacienteController.Update',
 };
