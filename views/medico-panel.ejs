@@ -23,12 +23,8 @@
         <tbody>
           <% pacientes.forEach(function (paciente) { %>
             <tr>
-              <td>
-                <%= paciente.Cedula %>
-              </td>
-              <td>
-                <%= paciente.Nombre +' '+ paciente.Apellido %>
-              </td>
+              <td><%= paciente.Cedula %></td>
+              <td><%= paciente.Nombre +' '+ paciente.Apellido %></td>
               <td></td>
               <td></td>
             </tr>

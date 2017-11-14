@@ -6,11 +6,14 @@
  */
 
 module.exports = {
-  Registrar: function(req, res) {
+  Registrar: function (req, res) {
     var params = req.body;
-    Medico.create(params, function(err, createdData) {
-      if (err) { return res.badRequest({ error: err }) }
-      res.view('medico-panel', { medico: createdData });
+    Medico.create(params, function (err, createdData) {
+      if (err) {
+        return res.badRequest({ error: err });
+      } else {
+        res.view('medico-login');
+      }
     });
   },
   Login: function(req, res) {
