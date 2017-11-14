@@ -25,7 +25,7 @@ module.exports = {
         var dateDia = hoy.getDate();
         console.log('\''+dateAnio + '-' + dateMes + '-' + dateDia+'\'');
       Consulta.query(
-        'SELECT paciente.Apellido, paciente.Nombre, paciente.Cedula FROM consulta INNER JOIN medico on consulta.Medico = medico.id INNER JOIN paciente ON paciente.id = consulta.Paciente WHERE medico.id = '+ doc.id +' AND consulta.Fecha = ' + '\'' + dateAnio + '-' + dateMes + '-' + dateDia + '\'',// + '\'' + dateAnio + '-' + dateMes + '-' + dateDia + '\'' +\'2017-07-07\',*/
+        'SELECT paciente.* FROM consulta INNER JOIN medico on consulta.Medico = medico.id INNER JOIN paciente ON paciente.id = consulta.Paciente WHERE medico.id = '+ doc.id +' AND consulta.Fecha = ' + '\'' + dateAnio + '-' + dateMes + '-' + dateDia + '\'',// + '\'' + dateAnio + '-' + dateMes + '-' + dateDia + '\'' +\'2017-07-07\',*/
         function(err, rawResult) {
           if (err) { return res.serverError(err); }
           res.view('medico-panel', { medico: doc, pacientes: rawResult});

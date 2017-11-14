@@ -23,7 +23,7 @@
         <tbody>
           <% pacientes.forEach(function (paciente) { %>
             <tr>
-              <td><a href="/Medico/Consulta"><%= paciente.Cedula %></a></td>
+              <td><a href="/Medico/Consulta/<%= medico.id %>/<%= paciente.id %>"><%= paciente.Cedula %></a></td>
               <td><%= paciente.Nombre +' '+ paciente.Apellido %></td>
               <td></td>
               <td></td>
