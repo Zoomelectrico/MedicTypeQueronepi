@@ -16,6 +16,7 @@ module.exports = {
 	      }
 	    });
     },
+
 	Buscar: function(req, res, next, callback) {
 	    var consulta = req.body;
 	    Consutla.findOne(consulta, function(err, createdData){
@@ -25,7 +26,17 @@ module.exports = {
 	        res.view('medico-historia-medica', {Consulta:createdData});
 	      }
 	    });
- 	}
+ 	},
+
+ 	Modificar: function (req, res) {
+    Consulta.findOne({ Cedula: req.body.cedula }).exec(function (err, paciente) {
+      if (err) {
+        return res.badRequest({ error: err });
+      }
+      console.log(consulta);
+      res.view('medico-historia-medica', { Consulta: consulta });
+    });
+  }
 
 };
 

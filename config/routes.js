@@ -17,5 +17,7 @@ module.exports.routes = {
   'POST /Paciente/Modificar': 'PacienteController.Modificar',
   'POST /Paciente/Update/:id': 'PacienteController.Update',
   
-  'POST /Consulta/Crear': 'ConsultaControler.Crear'
+  'POST /Consulta/Crear': 'ConsultaControler.Crear',
+  'GET /Medico/Consulta': {view: 'medico-consulta'},
+  'POST /Consulta/Modificar': 'ConsultaControler.Modificar'
 };
