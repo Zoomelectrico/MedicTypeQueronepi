@@ -7,13 +7,28 @@
 
 module.exports = {
 	Crear: function(req, res, next, callback) {
+	    
 	    var params = req.body;
 	    Consulta.create(params, function(err, createdData) {
 	      if (err) {
 	        return res.badRequest({error: err});
 	      } else {
-	        res.view('medico-consulta', {Consulta:createdData}); 
+	        res.view('medico-historia-medica', {medico: med, consulta:createdData}); 
 	      }
+	    });
+    },
+
+    Agendar: function(req, res){
+    	console.log(req.params);
+	    var med;
+	    Medico.findOne({id:req.params.idMedico}).exec(function(err, medico){
+	    	if(err){
+	    		return res.badRequest({error: err});
+	    	}else{
+	    		console.log(medico);
+	    		med = medico;
+	    		res.view('medico-agenda', {medico:med});
+	    	};
 	    });
     },
 
@@ -29,12 +44,12 @@ module.exports = {
  	},
 
  	Modificar: function (req, res) {
-    Consulta.findOne({ Cedula: req.body.cedula }).exec(function (err, paciente) {
+    Consulta.findOne({ Cedula: req.body.cedula }).exec(function (err, consulta) {
       if (err) {
         return res.badRequest({ error: err });
       }
       console.log(consulta);
-      res.view('medico-historia-medica', { Consulta: consulta });
+      res.view('medico-consulta', { Consulta: consulta });
     });
 	},
 	
@@ -44,8 +59,8 @@ module.exports = {
 		var paciente;
 		Medico.findOne({id:req.params.idMedico}).exec(function (err, medico){
 			if (err) {
-        return res.badRequest({ error: err });
-      } else{
+        		return res.badRequest({ error: err });
+      	} else{
 				console.log(medico);
 				doc = medico;
 			};

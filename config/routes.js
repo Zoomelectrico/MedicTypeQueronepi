@@ -3,7 +3,8 @@ module.exports.routes = {
   '/': {
     view: 'homepage'
   },
-  'GET /Medico/Agenda': {view: 'medico-agenda'},
+  //'GET /Medico/Agenda': {view: 'medico-agenda'},
+  'GET /Medico/Agenda/:idMedico': 'consultaController.Agendar',  
   'GET /Medico/Login': {view: 'medico-login'},
   'GET /Medico/Registro': {view: 'medico-registro'},
   'POST /Medico/Registrado': 'MedicoController.Registrar',
