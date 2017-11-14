@@ -3,6 +3,7 @@ module.exports.routes = {
   '/': {
     view: 'homepage'
   },
+  'GET /Medico/Agenda': {view: 'medico-agenda'},
   'GET /Medico/Login': {view: 'medico-login'},
   'GET /Medico/Registro': {view: 'medico-registro'},
   'POST /Medico/Registrado': 'MedicoController.Registrar',
@@ -15,4 +16,6 @@ module.exports.routes = {
   // 'POST /Paciente/Informes': PacienteController.Informes,
   'POST /Paciente/Modificar': 'PacienteController.Modificar',
   'POST /Paciente/Update/:id': 'PacienteController.Update',
+  
+  'POST /Consulta/Crear': 'ConsultaControler.Crear'
 };
