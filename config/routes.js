@@ -27,6 +27,8 @@ module.exports.routes = {
 
 
   'GET /Patologia/fecha': {view: 'patologia-fecha'},
+  'GET /Patologia/fecha2': {view: 'patologia-fecha2'}, 
   'POST /Patologia/enviarFecha': 'PatologiaController.intervaloPatologiasDiagnosticadas', 
-  'GET /Patologia/chang': {view: 'patologia-mostrar'}
+  'GET /Patologia/chang': {view: 'patologia-mostrar'},
+  'POST /Patologia/enviarFechaNoDiag' : 'PatologiaController.intervaloPatologiasNoDiagnosticadas'
 };

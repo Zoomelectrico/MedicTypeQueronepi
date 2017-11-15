@@ -38,27 +38,33 @@ module.exports = {
 
             res.view('patologia-mostrar', {patologias}); 
         });
-    }
+    },
 
 
 
-/*
+
     intervaloPatologiasNoDiagnosticadas: function (req, res) {
-        console.log(req.params.fecha1); 
-        console.log(req.params.fecha2);
+        console.log(req.body.fecha1); 
+        console.log(req.body.fecha2);
+        Query =  "SELECT patologia.* from patologias_informe " +
+        " RIGHT OUTER JOIN  patologia ON patologias_informe.patologia = patologia.id " +
+        "LEFT OUTER JOIN consulta ON patologias_informe.informe = consulta.id " +
+        " WHERE Fecha is NULL OR Nombre NOT IN ( " +
+        " select patologia.nombre from patologias_informe " +
+        " RIGHT OUTER JOIN  patologia ON patologias_informe.patologia = patologia.id " +
+        " LEFT OUTER JOIN consulta ON patologias_informe.informe = consulta.id " +
+        " WHERE Fecha BETWEEN '" + req.body.fecha1+ "' AND '" + req.body.fecha2 + "'); ";
+         console.log(Query); 
         Consulta.query(
-        'select Consulta.fecha, patologia.nombre, COUNT(patologia.nombre) as vecesDiagnosticada from Consulta' +
-       ' INNER JOIN patologias_informe on Consulta.id = patologias_informe.informe ' +
-       ' INNER JOIN patologia on patologias_informe.patologia = patologia.id ' +
-          "WHERE Fecha != '" + req.params.fecha1 + "' AND '" + req.params.fecha2 + "'" + "Fecha IS NULL" +
-        "GROUP BY patologia.nombre;" ,
+         Query,
         function (err, rawResult) {
+            console.log(rawResult); 
             if (err) {return res.serverError(err);}
-            res.view('patologia-mostrar', {patologias: rawResult }); 
+            res.view('patologia-mostrarNoDiag', {patologias: rawResult }); 
 
         }); 
     }
-*/
+
 
       
 };
