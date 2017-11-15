@@ -45,7 +45,7 @@ module.exports = {
     Medico: {
         type: 'int',
     },
-    paciente: {
+    Paciente: {
         type: 'int', 
     }
   },

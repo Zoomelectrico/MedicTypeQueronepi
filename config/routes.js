@@ -4,11 +4,12 @@ module.exports.routes = {
     view: 'homepage'
   },
   //'GET /Medico/Agenda': {view: 'medico-agenda'},
-  'GET /Medico/Agenda/:idMedico': 'consultaController.Agendar',  
+  'GET /Medico/Agenda/:idMedico': 'ConsultaController.Agendar',  
   'GET /Medico/Login': {view: 'medico-login'},
   'GET /Medico/Registro': {view: 'medico-registro'},
   'POST /Medico/Registrado': 'MedicoController.Registrar',
-  'POST /Medico/Home':'MedicoController.Login',
+  'POST /Medico/BuscarPorCedula':'MedicoController.BuscarPorCedula',
+  'POST /Medico/BuscarPorID/:id':'MedicoController.BuscarPorID',
 
   'GET /Paciente/Registro': {view:'paciente-registro'},
   'POST /Paciente/Registro': 'PacienteController.Crear',
@@ -18,7 +19,7 @@ module.exports.routes = {
   'POST /Paciente/Modificar': 'PacienteController.Modificar',
   'POST /Paciente/Update/:id': 'PacienteController.Update',
   
-  'POST /Consulta/Crear': 'ConsultaController.Crear',
+  'POST /Consulta/Crear/:idMedico/:idPaciente': 'ConsultaController.Crear',
 
   'GET /Medico/Consulta/:idMedico/:idPaciente': 'ConsultaController.BuscarModificar',//{view: 'medico-consulta'},
   

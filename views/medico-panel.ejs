@@ -10,6 +10,7 @@
     <div class="col m12">
       <h3 class="center">Lista de Pacientes</h3>
     </div>
+    
     <div class="col m12">
       <table>
         <thead>
@@ -25,8 +26,8 @@
             <tr>
               <td><a href="/Medico/Consulta/<%= medico.id %>/<%= paciente.id %>"><%= paciente.Cedula %></a></td>
               <td><%= paciente.Nombre +' '+ paciente.Apellido %></td>
-              <td></td>
-              <td></td>
+              <td><a class="waves-effect waves-light btn blue darken-1" href="/Medico/Login">Historia</a></td>
+              <td><a href="/Medico/Consulta/<%= medico.id %>/<%= paciente.id %>" class="waves-effect waves-light btn blue darken-1">Consulta</a></td>
             </tr>
             <%})%>
         </tbody>

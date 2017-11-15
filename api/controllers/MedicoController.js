@@ -16,20 +16,54 @@ module.exports = {
       }
     });
   },
-  Login: function(req, res) {
-    Medico.findOne({ Cedula: req.body.cedula }).exec(function(err, doc) {
+
+  BuscarPorCedula: function (req, res) {
+    var doc;
+    Medico.findOne({ Cedula: req.body.cedula }).exec(function (err, doctor) {
       if (err) { return res.badRequest({ error: err }) }
-        var hoy = new Date();
-        var dateAnio =  hoy.getFullYear();
-        var dateMes = hoy.getMonth() + 1;
-        var dateDia = hoy.getDate();
-        console.log('\''+dateAnio + '-' + dateMes + '-' + dateDia+'\'');
+      doc = doctor;
+      console.log(doc);
       Consulta.query(
-        'SELECT paciente.* FROM consulta INNER JOIN medico on consulta.Medico = medico.id INNER JOIN paciente ON paciente.id = consulta.Paciente WHERE medico.id = '+ doc.id +' AND consulta.Fecha = ' + '\'' + dateAnio + '-' + dateMes + '-' + dateDia + '\'',// + '\'' + dateAnio + '-' + dateMes + '-' + dateDia + '\'' +\'2017-07-07\',*/
-        function(err, rawResult) {
+        'SELECT paciente.id, paciente.Cedula, paciente.Nombre, paciente.Apellido  FROM consulta inner join paciente ' +
+        'on paciente.id = consulta.Paciente inner join medico on medico.id = consulta.Medico ' +
+        'where medico.id = ' + doc.id + ' group by paciente.id',
+        function (err, rawResult) {
           if (err) { return res.serverError(err); }
-          res.view('medico-panel', { medico: doc, pacientes: rawResult});
+          res.view('medico-panel', { medico: doc, pacientes: rawResult });
         })
-    });
-  }
+      });
+    },
+
+    BuscarPorID: function (req, res) {
+      var doc;
+      Medico.findOne({ id: req.params.id }).exec(function (err, doctor) {
+        if (err) { return res.badRequest({ error: err }) }
+        doc = doctor;
+        console.log(doc);
+        Consulta.query(
+          'SELECT paciente.id, paciente.Cedula, paciente.Nombre, paciente.Apellido  FROM consulta inner join paciente ' +
+          'on paciente.id = consulta.Paciente inner join medico on medico.id = consulta.Medico ' +
+          'where medico.id = ' + doc.id + ' group by paciente.id',
+          function (err, rawResult) {
+            if (err) { return res.serverError(err); }
+            res.view('medico-panel', { medico: doc, pacientes: rawResult });
+          })
+        });
+      },
+
+
+
+
+      BuscarPacientes: function (req, res) {
+        console.log(req.params.id);
+        var doc = req.params.id;
+        Consulta.query(
+          'SELECT paciente.id, paciente.Cedula, paciente.Nombre, paciente.Apellido  FROM consulta inner join paciente ' +
+          'on paciente.id = consulta.Paciente inner join medico on medico.id = consulta.Medico ' +
+          'where medico.id = ' + doc + '',
+          function (err, rawResult) {
+            if (err) { return res.serverError(err); }
+            res.view('medico-panel', { medico: doc, pacientes: rawResult });
+          });
+      }
 };

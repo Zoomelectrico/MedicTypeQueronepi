@@ -24,7 +24,7 @@ module.exports = {
       if (err) {
         return res.badRequest({ error: err });
       } else {
-        res.view('paciente-informe', { Paciente: createdData });
+        res.redirect('/Consulta/Crear', { Paciente: createdData });
       }
     });
   },
