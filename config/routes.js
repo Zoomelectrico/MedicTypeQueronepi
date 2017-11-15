@@ -23,5 +23,7 @@ module.exports.routes = {
 
   'GET /Medico/Consulta/:idMedico/:idPaciente': 'ConsultaController.BuscarModificar',//{view: 'medico-consulta'},
   
-  'POST /Consulta/Modificar': 'ConsultaController.Modificar'
+  'POST /Consulta/Modificar': 'ConsultaController.Modificar',
+
+  'GET /patologia/fecha': {view: 'patologia-fecha'}
 };
