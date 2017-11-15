@@ -25,5 +25,8 @@ module.exports.routes = {
   
   'POST /Consulta/Modificar': 'ConsultaController.Modificar',
 
-  'GET /patologia/fecha': {view: 'patologia-fecha'}
+
+  'GET /Patologia/fecha': {view: 'patologia-fecha'},
+  'POST /Patologia/enviarFecha': 'PatologiaController.intervaloPatologiasDiagnosticadas', 
+  'GET /Patologia/chang': {view: 'patologia-mostrar'}
 };

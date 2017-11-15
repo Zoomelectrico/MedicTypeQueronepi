@@ -1,0 +1,37 @@
+<div class="banner">
+    <div class="row">
+      <div class="col m12 valign-wrapper">
+        <h4 class="vertical-align white-text">Patologías</h4>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row card-panel">
+      <div class="col m12">
+        <h3 class="center">Patologías diagnosticadas</h3>
+      </div>
+      
+      <div class="col m12">
+        <table>
+          <thead>
+            <tr>
+              <th>Patología</th>
+              <th>Veces Diagnosticada</th>
+              <th>Porcentaje</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% patologias.forEach(function (patologia) { %>
+              <tr>
+                <td><%= patologia.nombre %> </td>
+                <td><%= patologia.vecesDiagnosticada %></td>
+                <td><%= patologia.porcentaje %> </td>
+              </tr>
+              <%})%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>
+  
