@@ -10,6 +10,7 @@ module.exports.routes = {
   'POST /Medico/Registrado': 'MedicoController.Registrar',
   'POST /Medico/BuscarPorCedula':'MedicoController.BuscarPorCedula',
   'POST /Medico/BuscarPorID/:id':'MedicoController.BuscarPorID',
+  'GET /Medico/HistoriaMedica/:idMedico/:idPaciente': 'ConsultaController.Buscar',
 
   'GET /Paciente/Registro/:id': {view:'paciente-registro'},
   'POST /Paciente/Registro/:id': 'PacienteController.Crear',
