@@ -13,7 +13,7 @@ module.exports = {
         return res.badRequest({ error: err });
       } else {
         console.log(createdData);
-        res.view('homepage');
+        res.redirect('/Medico/Consulta/'+req.params.id+'/'+createdData.id);
       }
     });
   },
