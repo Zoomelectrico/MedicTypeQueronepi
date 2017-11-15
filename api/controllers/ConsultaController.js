@@ -72,15 +72,22 @@ module.exports = {
 		});
 	},
 
-	Buscar: function (req, res, next, callback) {
-		var consulta = req.body;
-		Consutla.findOne(consulta, function (err, createdData) {
-			if (err) {
-				return res.badRequest({ error: err });
-			} else {
-				res.view('medico-historia-medica', { Consulta: createdData });
-			}
+	Buscar: function (req, res) {
+		Paciente.findOne({id: req.params.idPaciente}).exec(function(err, Paciente){
+			if (err) { return res.badRequest({ error: err }) }
+		    Consulta.query(
+			'SELECT * FROM consulta INNER JOIN Paciente ON consulta.Paciente = paciente.id ' +
+			'INNER JOIN medico ON consulta.Medico = medico.id WHERE medico.id = ' + req.params.idMedico + 
+			' AND paciente.id = ' + req.params.idPaciente + ' group by consulta.id',
+			function(err, rawResult){
+				if(err){
+					return res.serverError(err);
+				} else {
+					res.view('medico-historia-medica', { paciente: Paciente, consultas: rawResult });
+				}
+			})
 		});
+		
 	},
 
 	Modificar: function (req, res) {

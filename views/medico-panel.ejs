@@ -26,7 +26,7 @@
             <tr>
               <td><a href="/Medico/Consulta/<%= medico.id %>/<%= paciente.id %>"><%= paciente.Cedula %></a></td>
               <td><%= paciente.Nombre +' '+ paciente.Apellido %></td>
-              <td><a class="waves-effect waves-light btn blue darken-1" href="/Medico/Login">Historia</a></td>
+              <td><a class="waves-effect waves-light btn blue darken-1" href="/Medico/HistoriaMedica/<%= medico.id%>/<%= paciente.id %>">Historia</a></td>
               <td><a href="/Medico/Consulta/<%= medico.id %>/<%= paciente.id %>" class="waves-effect waves-light btn blue darken-1">Consulta</a></td>
             </tr>
             <%})%>
