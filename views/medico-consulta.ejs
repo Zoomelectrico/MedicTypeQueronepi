@@ -1,14 +1,18 @@
 <div class="banner">
   <div class="col m12 valign-wrapper">
-    <h4 class="vertical-align white-text">Consulta del Dr. <%= medico.Nombre+' '+medico.Apellido%></h4>
+    <h4 class="vertical-align white-text">Consulta del Dr(a).
+      <%= medico.Nombre+' '+medico.Apellido%>
+    </h4>
   </div>
 </div>
-<form method="POST" action="/Consulta/Crear" class="container">
+
+<form method="POST" action="/Consulta/Crear/<%= medico.id %>/<%= paciente.id %>" class="container">
   <div class="row card-panel">
     <div class="col m12">
       <div class="row">
         <div class="col m12">
-          <h6 class="center">Datos de Paciente</h6></div>
+          <h6 class="center">Datos del Paciente</h6>
+        </div>
       </div>
       <div class="row">
         <div class="col m6 center">
@@ -25,6 +29,7 @@
             <% var c = new Date( paciente.FNacimiento - Date.now()); %>
               <% var d = c.getFullYear() - 1970; %>
                 <%= d %>
+
           </p>
         </div>
       </div>
@@ -47,11 +52,13 @@
       </div>
     </div>
   </div>
+
   <div class="row card-panel">
     <div class="col m12">
       <div class="row">
         <div class="col m12">
-          <h5 class="center">Condición actual del paciente</h5></div>
+          <h5 class="center">Condición actual del paciente</h5>
+        </div>
       </div>
       <div class="row">
         <div class="col m12">
@@ -89,6 +96,7 @@
       </div>
     </div>
   </div>
+
   <div class="row card-panel">
     <div class="col m12">
       <div class="row">
@@ -123,6 +131,8 @@
               </select>
               <label>Medicamentos</label>
             </div>
+          </div>
+          <!-- 
             <div class="col m6">
               <a class="waves-effect waves-light btn blue darken-1" href="#NMedicamento">Nuevo Medicamento</a>
               <form id="NMedicamento" class="modal" method="POST" action="">
@@ -136,7 +146,9 @@
                 </div>
                 <form>
             </div>
-          </div>
+
+            -->
+
           <div class="row">
             <div class="col m12 input-field">
               <textarea id="indicaciones" class="materialize-textarea"></textarea>
@@ -147,9 +159,15 @@
       </div>
     </div>
   </div>
+
+
+
+
+
+
   <div class="row card-panel">
     <div class="col m12">
       <button class="waves-effect waves-light btn blue darken-1" type="submit">Guardar</button>
     </div>
   </div>
-  </form>
+</form>
