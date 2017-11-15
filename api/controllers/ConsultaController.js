@@ -24,9 +24,38 @@ module.exports = {
 				return res.badRequest({ error: err });
 			} else {
 				console.log(createdData);
-			    res.redirect('/Medico/BuscarPorID/'+req.params.idMedico)
+				var consulta = createdData;
+				if((req.body.motivo != null && req.body.motivo != '') || (req.body.organo != null && req.body.organo != '')){
+					Cirujano.create({motivo_Operacion: req.body.motivo, Organo: req.body.organo, informe_id: consulta.id}, function(err, createdData){
+						if(err){
+							return res.badRequest({ error:err });
+						} else {
+							console.log(createdData);
+						}
+					});
+				}
+				if(req.body.condicion != null && req.body.condicion != ''){
+					Internista.create({Condicion: req.body.condicion, informe_id: consulta.id}, function(err, createdData){
+						if(err){
+							return res.badRequest({ error:err });
+						} else {
+							console.log(createdData);
+						}
+					});
+				}
+				if(req.body.dieta != null && req.body.dieta != ''){
+					Nutricionista.create({Dieta: req.body.dieta, informe_id: consulta.id}, function(err, createdData){
+						if(err){
+							return res.badRequest({ error:err });
+						} else {
+							console.log(createdData);
+						}
+					});
+				}
+				res.redirect('/Medico/BuscarPorID/'+req.params.idMedico);
 			}
 		});
+		
 	},
 
 	Agendar: function (req, res) {
