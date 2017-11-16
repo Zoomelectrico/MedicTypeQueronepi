@@ -1,29 +1,32 @@
 <div class="banner">
-        <div class="row">
-          <div class="col m12 valign-wrapper">
-            <h4 class="white-text vertical-align">Revisión de patologias no diagnosticadas</h4>
-          </div>
+  <div class="row">
+    <div class="row"></div>
+    <div class="row"></div>
+    <div class="col m12 valign-wrapper">
+      <h3 class="white-text vertical-align">Revisión de patologias no diagnosticadas</h3>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <form class="row" method="POST" action="/patologia/enviarFechaNoDiag">
+    <div class="col m12 card-panel">
+      <div class="row"></div>
+      <div class="row">
+        <div class="col m6 input-field">
+          <input type="text" placeholder="1999-02-02" class="datepicker" id="fecha1">
+          <label for="fecha1">fecha1</label>
+        </div>
+        <div class="col m6 input-field">
+          <input type="text" placeholder="2013-05-03" class="datepicker" id="fecha2">
+          <label for="fecha2">fecha2</label>
         </div>
       </div>
-      <div class="container">
-        <form class="row" method="POST" action="/patologia/enviarFechaNoDiag">
-          <div class="col m12 card-panel">
-            <div class="row">
-              <div class="col m6 input-field">
-                <input placeholder="1999-02-02" id="fecha1" name="fecha1" type="text" class="validate">
-                <label for="fecha1">fecha1</label>
-              </div>
-              <div class="col m6 input-field">
-                <input placeholder="2013-05-03" id="fecha2" name="fecha2" type="text" class="validate">
-                <label for="fecha2">fecha2</label>
-              </div>
-            </div>
-           
-            <div class="row">
-              <div class="col m12 center">
-                <button class="waves-effect waves-light btn blue darken-1" type="submit">Revisar</button>
-              </div>
-            </div>
-          </div>
-        </form>
+
+      <div class="row">
+        <div class="col m12 center">
+          <button class="waves-effect waves-light btn blue darken-1" type="submit">Revisar</button>
+        </div>
       </div>
+    </div>
+  </form>
+</div>
