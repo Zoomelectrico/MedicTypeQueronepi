@@ -1,8 +1,6 @@
-$(document).ready(function() {
-  $('select').material_select();
-});
-$(document).ready(function() {
-  $('.datepicker').pickadate({
+
+$('select').material_select(); 
+ $('select').material_select(); $('.datepicker').pickadate({
     selectMonths: true,
     selectYears: 1000,
     today: 'Today',
@@ -17,5 +15,3 @@ $(document).ready(function() {
   $('.fixed-action-btn.toolbar').closeToolbar();
   $('.collapsible').collapsible();
 
-
-});

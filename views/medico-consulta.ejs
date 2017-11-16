@@ -90,7 +90,6 @@
             <div class="col m6 input-field">
               <input placeholder="120/80" name="FCardiaca" id="FCardiaca" type="text" class="validate">
               <label for="FCardiaca">Frecuencia Cardiaca</label>
-              <input type="checkbox" name="vehicle" value="Bike"> I have a bike<br>
             </div>
           </div>
         </div>
@@ -111,8 +110,7 @@
                   <% medicamentos.forEach(function (medicamento) { %>
 
                       <option value="<%= medicamento.id %>"> <%= medicamento.Nombre %> </option>
-                      <input type="checkbox" name = "medicamento" value:" <%= medicamento.id%>"> 
-                      <%= medicamento.Nombre %> <br>
+                      
 
                     <%})%>
                   
@@ -128,8 +126,7 @@
                  
                       <% patologias.forEach(function (patologia) { %>
                         <option value="<%= patologia.id %>"> <%= patologia.Nombre %> </option>
-                        <input type="checkbox" name = "patologia" value:" <%= patologia.id%>"> 
-                        <%= patologia.Nombre %> <br>
+                      
                         <%})%>
 
                       </select>
