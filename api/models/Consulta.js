@@ -18,9 +18,6 @@ module.exports = {
     Tipo: {
         type: 'string'
     },
-    Precio: {
-        type: 'float'
-    },
     Fecha: {
         type: 'date'
     },
