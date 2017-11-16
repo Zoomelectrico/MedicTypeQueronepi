@@ -167,7 +167,10 @@ module.exports = {
 	},
 
 	BuscarModificar: function (req, res) {
+		console.log("PARAMS: ====================");
 		console.log(req.params);
+		console.log("BODY: ==================="); 
+		console.log(req.body);
 		var doc;
 		var paciente;
 	

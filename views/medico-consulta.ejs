@@ -90,6 +90,7 @@
             <div class="col m6 input-field">
               <input placeholder="120/80" name="FCardiaca" id="FCardiaca" type="text" class="validate">
               <label for="FCardiaca">Frecuencia Cardiaca</label>
+              <input type="checkbox" name="vehicle" value="Bike"> I have a bike<br>
             </div>
           </div>
         </div>
@@ -103,14 +104,18 @@
              
               <div class="input-field col s12">
                 
-                  <select multiple>
+                  <select id = "Medicamentos" multiple >
                     <option value="" disabled selected>Medicamentos</option>
                     
             
                   <% medicamentos.forEach(function (medicamento) { %>
-                      <option value="<%= medicamento.id %>"> <%= medicamento.Nombre %> </option>
-                    <%})%>
 
+                      <option value="<%= medicamento.id %>"> <%= medicamento.Nombre %> </option>
+                      <input type="checkbox" name = "medicamento" value:" <%= medicamento.id%>"> 
+                      <%= medicamento.Nombre %> <br>
+
+                    <%})%>
+                  
                   </select>
                 </div>
 
@@ -118,16 +123,18 @@
           <div class="col m6 input-field">
               <div class="input-field col s12">
                   
-                    <select multiple>
-                      <option value="" disabled selected>Patologias</option>
+                    <select id = "Patologias" multiple >
+                        <option value="" disabled selected>Patologias </option>
                  
                       <% patologias.forEach(function (patologia) { %>
                         <option value="<%= patologia.id %>"> <%= patologia.Nombre %> </option>
+                        <input type="checkbox" name = "patologia" value:" <%= patologia.id%>"> 
+                        <%= patologia.Nombre %> <br>
                         <%})%>
 
                       </select>
                     </div>
-                
+                    
           </div>
       </div>
   </div>
@@ -212,10 +219,14 @@
     </div>
   </div>
   
-
-
+  <input type="hidden" name="Med" id="Med" >
+  <input type="hidden" name="Pat" id="Pat" >
 
 <script type="text/javascript">
 function mostrar(div){
 document.getElementById(div).style.display = 'block';}
-</script>
+
+
+
+    </script>
+</form>
