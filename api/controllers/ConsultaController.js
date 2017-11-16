@@ -53,10 +53,24 @@ module.exports = {
 						}
 					});
 				}
-				console.log(consulta); 
-				console.log("================================");
+				Patologia.findOne({ Nombre: req.body.patologia}).exec(function (err, patologia) { 
+					if (err) { return res.badRequest({error: err});
+				} else {
+					Medicamento.findOne({ Nombre: req.body.medicamento}).exec(function (err, medicamento) { 
+						if (err) { return res.badRequest({error: err});
+					} else {
+
+				console.log(patologia);
+				console.log(medicamento);
 				
-				console.log(req.body); 
+				
+
+				Patologias_informe.create({informe: consulta.id, patologia: patologia.id}, function (err, createdData) {
+					if (err) { return res.badRequest({error: err})};
+				});
+				Medicamentos_preescritos.create({ medicamento: medicamento.id, informe: consulta.id}, function (err, createdData) {
+					if (err) { return res.badRequest({error: err})};
+				})
 				res.redirect('/Medico/BuscarPorID/'+req.params.idMedico)
 				
 				
@@ -66,7 +80,14 @@ module.exports = {
 			}
 		});
 		
-	},
+	}
+}); 
+			}
+
+		}); 
+	}
+
+,
 
 	Agendar: function (req, res) {
 		console.log(req.params);
@@ -169,7 +190,7 @@ module.exports = {
 	BuscarModificar: function (req, res) {
 		console.log("PARAMS: ====================");
 		console.log(req.params);
-		console.log("BODY: ==================="); 
+		console.log("BODY: ===================")
 		console.log(req.body);
 		var doc;
 		var paciente;
