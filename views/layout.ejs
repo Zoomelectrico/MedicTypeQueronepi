@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
   <!--STYLES-->
-  
+  <link rel="stylesheet" href="/styles/main.css">
   <!--STYLES END-->
 </head>
 
@@ -16,7 +16,7 @@
   <header>
     <nav class="blue darken-1 white-text">
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo center accent">MedicType</a>
+        <a href="/" class="brand-logo center accent">MedicType</a>
         <ul id="nav-mobile" class="left hide-on-med-and-down">
           <li>
             <a href="/Medico/Login">Médicos</a>
@@ -28,22 +28,11 @@
       </div>
     </nav>
   </header>
-
-  <contenido>
+  <main>
     <%- body %>
-  </contenido>
-
+  </main>
   <!--TEMPLATES-->
-  
   <!--TEMPLATES END-->
-
-  <!--SCRIPTS-->
-  <script src="/js/dependencies/sails.io.js"></script>
-  <script src="/js/dependencies/jquery-3.2.1.js"></script>
-  <script src="/js/dependencies/materialize.js"></script>
-  <script src="/js/main.js"></script>
-  <!--SCRIPTS END-->
-  
   <footer class="blue darken-1 white-text page-footer">
     <div class="footer-copyright">
       <div class="container">
@@ -51,8 +40,12 @@
       </div>
     </div>
   </footer>
-
-
+  <!--SCRIPTS-->
+  <script src="/js/dependencies/sails.io.js"></script>
+  <script src="/js/main.js"></script>
+  <!--SCRIPTS END-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </body>
 
 </html>
