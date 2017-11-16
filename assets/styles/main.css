@@ -14,20 +14,18 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  
 }
 
-main {
+contenido {
   flex: 1 0 auto;
 }
 
-div#index-main {
-  width: 100%;
-  height: 100%;
-  padding-top: 100px; 
+.fondo {
   background-image: url(../images/background.JPEG);
   background-repeat: no-repeat;
-  background-size: 100% auto;
-  z-index: 1;
+  height: 100vh;
+  background-size: cover;
 }
 
 div.banner {
@@ -37,5 +35,5 @@ div.banner {
   background-repeat: no-repeat;
   background-size: 100% auto;
   z-index: 1;
-  display: flex;
+  display: flex;  
 }

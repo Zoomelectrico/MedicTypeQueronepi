@@ -19,25 +19,25 @@
       <div class="nav-wrapper">
         <a href="#" class="brand-logo center accent">MedicType</a>
         <ul id="nav-mobile" class="left hide-on-med-and-down">
-          <li><a href="/Medico/Login">Médicos</a></li>
-          <li><a href="/Paciente/Login">Pacientes</a></li>
+          <li>
+            <a href="/Medico/Login">Médicos</a>
+          </li>
+          <li>
+            <a href="/Paciente/Login">Pacientes</a>
+          </li>
         </ul>
       </div>
     </nav>
   </header>
-  <main class="grey lighten-5">
+
+  <contenido>
     <%- body %>
-  </main>
+  </contenido>
+
   <!--TEMPLATES-->
   
   <!--TEMPLATES END-->
-  <footer class="page-footer blue darken-1 white-text">
-    <div class="footer-copyright">
-      <div class="container">
-        © 2017 MedicType by Queronepi.
-      </div>
-    </div>
-  </footer>
+
   <!--SCRIPTS-->
   <script src="/js/dependencies/sails.io.js"></script>
   <script src="/js/dependencies/jquery-3.2.1.js"></script>
@@ -46,6 +46,16 @@
   <!--SCRIPTS END-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+  <footer class="blue darken-1 white-text page-footer">
+    <div class="footer-copyright">
+      <div class="container">
+        © 2017 MedicType by Queronepi.
+      </div>
+    </div>
+  </footer>
+
+
 </body>
 
 </html>
