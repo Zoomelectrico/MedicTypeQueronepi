@@ -76,18 +76,39 @@ module.exports = {
 		Paciente.findOne({id: req.params.idPaciente}).exec(function(err, Paciente){
 			if (err) { return res.badRequest({ error: err }) }
 		    Consulta.query(
-			'SELECT * FROM consulta INNER JOIN Paciente ON consulta.Paciente = paciente.id ' +
-			'INNER JOIN medico ON consulta.Medico = medico.id WHERE medico.id = ' + req.params.idMedico + 
+			'SELECT consulta.* FROM consulta INNER JOIN paciente ON consulta.Paciente = paciente.id' +
+			' INNER JOIN medico ON consulta.Medico = medico.id'/*INNER JOIN patologias_informe as patologiaI ON patologiaI.Informe = consulta.id ' +
+			'INNER JOIN patologia ON patologiaI.Patologia = patologia.id*/ + ' WHERE medico.id = ' + req.params.idMedico + 
 			' AND paciente.id = ' + req.params.idPaciente + ' group by consulta.id',
 			function(err, rawResult){
 				if(err){
 					return res.serverError(err);
 				} else {
-					res.view('medico-historia-medica', { paciente: Paciente, consultas: rawResult });
+					var consultaResult = rawResult;
+					console.log(consultaResult);
+					Patologia.query(
+						'SELECT patoI.*, patologia.Nombre FROM patologias_informe as patoI INNER JOIN patologia ON patologia.id = patoI.Patologia',
+						function(err,rawResult){
+							if(err){return res.serverError(err);}
+							else{
+								var respuesta = rawResult
+								Medicamento.query(
+									'SELECT mediI.*, medicamento.Nombre FROM medicamentos_preescritos as mediI INNER JOIN medicamento ON mediI.medicamento = medicamento.id',
+									function(err,rawResult){
+										if(err){return res.serverError(err);}
+										else{
+											var medi = rawResult;
+											res.view('medico-historia-medica', { paciente: Paciente, consultas: consultaResult, patologias: respuesta, medicamentos: medi});
+										}
+									}
+									)
+								
+							}
+						}
+					)
 				}
 			})
 		});
-		
 	},
 
 	Modificar: function (req, res) {
