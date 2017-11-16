@@ -73,41 +73,76 @@ module.exports = {
 	},
 
 	Buscar: function (req, res) {
-		Paciente.findOne({id: req.params.idPaciente}).exec(function(err, Paciente){
+		Medico.findOne({id: req.params.idMedico}).exec(function(err,Medico){
 			if (err) { return res.badRequest({ error: err }) }
-		    Consulta.query(
-			'SELECT consulta.* FROM consulta INNER JOIN paciente ON consulta.Paciente = paciente.id' +
-			' INNER JOIN medico ON consulta.Medico = medico.id'/*INNER JOIN patologias_informe as patologiaI ON patologiaI.Informe = consulta.id ' +
-			'INNER JOIN patologia ON patologiaI.Patologia = patologia.id*/ + ' WHERE medico.id = ' + req.params.idMedico + 
-			' AND paciente.id = ' + req.params.idPaciente + ' group by consulta.id',
-			function(err, rawResult){
-				if(err){
-					return res.serverError(err);
-				} else {
-					var consultaResult = rawResult;
-					console.log(consultaResult);
-					Patologia.query(
-						'SELECT patoI.*, patologia.Nombre FROM patologias_informe as patoI INNER JOIN patologia ON patologia.id = patoI.Patologia',
-						function(err,rawResult){
-							if(err){return res.serverError(err);}
-							else{
-								var respuesta = rawResult
-								Medicamento.query(
-									'SELECT mediI.*, medicamento.Nombre FROM medicamentos_preescritos as mediI INNER JOIN medicamento ON mediI.medicamento = medicamento.id',
-									function(err,rawResult){
-										if(err){return res.serverError(err);}
-										else{
-											var medi = rawResult;
-											res.view('medico-historia-medica', { paciente: Paciente, consultas: consultaResult, patologias: respuesta, medicamentos: medi});
-										}
+				Paciente.findOne({id: req.params.idPaciente}).exec(function(err, Paciente){
+					if (err) { return res.badRequest({ error: err }) }
+				    Consulta.query(
+					'SELECT consulta.* FROM consulta INNER JOIN paciente ON consulta.Paciente = paciente.id' +
+					' INNER JOIN medico ON consulta.Medico = medico.id '+
+					'WHERE medico.id = ' + req.params.idMedico + 
+					' AND paciente.id = ' + req.params.idPaciente + ' group by consulta.id',
+					function(err, rawResult){
+						if(err){
+							return res.serverError(err);
+						} else {
+							var consultaResult = rawResult;
+							console.log(consultaResult);
+							Cirujano.query(
+								'SELECT * FROM cirujano',
+								function(err, rawResult){
+									if(err){
+										return res.serverError(err);
+									} else{
+										var cirujanoRes = rawResult;
+										Nutricionista.query(
+											'SELECT * FROM nutricionista',
+											function(err, rawResult){
+												if(err){
+													return res.serverError(err);
+												} else {
+													var nutriRes = rawResult;
+													Internista.query(
+														'SELECT * FROM internista',
+														function(err, rawResult){
+															if(err){
+																return res.serverError(err);
+															} else {
+																var interRes = rawResult;
+																Patologia.query(
+																	'SELECT patoI.*, patologia.Nombre FROM patologias_informe as patoI INNER JOIN patologia ON patologia.id = patoI.Patologia',
+																	function(err,rawResult){
+																		if(err){return res.serverError(err);}
+																		else{
+																			var respuesta = rawResult
+																			Medicamento.query(
+																				'SELECT mediI.*, medicamento.Nombre FROM medicamentos_preescritos as mediI INNER JOIN medicamento ON mediI.medicamento = medicamento.id',
+																				function(err,rawResult){
+																					if(err){return res.serverError(err);}
+																					else{
+																						var medi = rawResult;
+																						res.view('medico-historia-medica', {medico: Medico, paciente: Paciente, consultas: consultaResult, patologias: respuesta, medicamentos: medi, cirujanos: cirujanoRes, internistas: interRes, nutricionistas: nutriRes});
+																					}
+																				}
+																			)
+																		}
+																	}
+																)
+															}
+															
+														})
+													
+												}
+												
+											})
+										
 									}
-									)
-								
-							}
+									
+								})
+							
 						}
-					)
-				}
-			})
+					})
+				});
 		});
 	},
 
