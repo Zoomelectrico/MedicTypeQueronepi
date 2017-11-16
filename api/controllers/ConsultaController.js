@@ -68,17 +68,19 @@ module.exports = {
 					Medicamento.findOne({ Nombre: req.body.medicamento}).exec(function (err, medicamento) { 
 						if (err) { return res.badRequest({error: err});
 					} else {
-
+				console.log("AQUIAQUIAUQUI");		
+				console.log(req.params);
+				console.log(req.body); 
 				console.log(patologia);
 				console.log(medicamento);
-				
+				console.log(patologia.id); 
 				
 
-				Patologias_informe.create({informe: consulta.id, patologia: patologia.id}, function (err, createdData) {
-					if (err) { return res.badRequest({error: err})};
+				Patologias_informe.create({informe: req.params.id, patologia: patologia.id}, function (err, createdData) {
+					//if (err) { return res.badRequest({error: err})};
 				});
-				Medicamentos_preescritos.create({ medicamento: medicamento.id, informe: consulta.id}, function (err, createdData) {
-					if (err) { return res.badRequest({error: err})};
+				Medicamentos_preescritos.create({ medicamento: medicamento.id, informe: req.params.id}, function (err, createdData) {
+					//if (err) { return res.badRequest({error: err})};
 				})
 				res.redirect('/Medico/BuscarPorID/'+req.params.idMedico)
 				
