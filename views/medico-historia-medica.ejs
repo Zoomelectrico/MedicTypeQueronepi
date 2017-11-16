@@ -24,16 +24,11 @@
                 <div class="container">
                   <div class ="row">
                     <div class="col s6">
-                      <p><b>Talla: </b><i><%= consulta.Talla %></i></p>
-                      <p><b>Peso: </b><i><%= consulta.Peso %></i></p>
-                      
+                      <% antecedentes.forEach(function(antecedente){%>
+                      <p><b>Antecedente: </b><i><%= antecedente.Antecedente %></i></p>
+                      <%})%>
                     </div>
-                    <div class="col s6">
-                      <p><b>Temperatura: </b><i><%= consulta.Temperatura %></i></p>
-                      <p><b>Tension: </b><i><%= consulta.Tension %></i></p>
-                      <p><b>Frecuencia Cardíaca: </b><i><%= consulta.FCardiaca %></i></p>
-                      <p><b>Frecuencia Respiratoria: </b><i><%= consulta.FRespiratoria %></i></p>
-                    </div>
+                   
                   </div>
                   <div class ="row">
                     <div class="col s6">

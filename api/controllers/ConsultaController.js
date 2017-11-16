@@ -26,6 +26,15 @@ module.exports = {
 			} else {
 				console.log(createdData);
 				var consulta = createdData;
+				if(req.body.antecedente != null && req.body.antecedente != ''){
+					Antecedente.create({Consulta: consulta.id, Antecedente: req.body.antecedente}, function(err, createdData){
+						if(err){
+							return res.badRequest({ error:err });
+						} else {
+							console.log(createdData);
+						}
+					});
+				}
 				if((req.body.motivo != null && req.body.motivo != '') || (req.body.organo != null && req.body.organo != '')){
 					Cirujano.create({motivo_Operacion: req.body.motivo, Organo: req.body.organo, informe_id: consulta.id}, function(err, createdData){
 						if(err){
@@ -152,7 +161,19 @@ module.exports = {
 																					if(err){return res.serverError(err);}
 																					else{
 																						var medi = rawResult;
-																						res.view('medico-historia-medica', {medico: Medico, paciente: Paciente, consultas: consultaResult, patologias: respuesta, medicamentos: medi, cirujanos: cirujanoRes, internistas: interRes, nutricionistas: nutriRes});
+																						Antecedente.query(
+																							'SELECT antecedentes.*, paciente.Nombre FROM antecedentes INNER JOIN consulta ON antecedentes.Consulta = consulta.id '+
+																							'INNER JOIN medico ON consulta.Medico = medico.id INNER JOIN paciente ON paciente.id = consulta.Paciente WHERE medico.id = '+ req.params.idMedico  
+																							+ ' AND paciente = '+ req.params.idPaciente + ' GROUP BY paciente.id',
+																							function(err, rawResult){
+																								if(err){return res.serverError(err);}
+																								else{
+																									var antecedente = rawResult;
+																									res.view('medico-historia-medica', {medico: Medico, paciente: Paciente, consultas: consultaResult, patologias: respuesta, medicamentos: medi, cirujanos: cirujanoRes, internistas: interRes, nutricionistas: nutriRes, antecedentes: antecedente});
+																								}
+																							}
+																							)
+																						
 																					}
 																				}
 																			)
