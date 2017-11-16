@@ -104,6 +104,16 @@ module.exports = {
 		console.log(req.params);
 		var doc;
 		var paciente;
+		var patologias; 
+		Patologia.find().exec(function (err,patologia) {
+			if (err) {
+				return res.badRequest({error: err});
+			}
+			else {
+				console.log(patologia); 
+				patologias = patologia; 
+			}
+		})
 		Medico.findOne({ id: req.params.idMedico }).exec(function (err, medico) {
 			if (err) {
 				return res.badRequest({ error: err });
@@ -118,7 +128,7 @@ module.exports = {
 			} else {
 				console.log(paci);
 				paciente = paci;
-				res.view('medico-consulta', { medico: doc, paciente: paciente });
+				res.view('medico-consulta', { medico: doc, paciente: paciente,patologias: patologias });
 			};
 		});
 
