@@ -160,6 +160,7 @@ module.exports = {
 		console.log(req.params);
 		var doc;
 		var paciente;
+	
 		Medico.findOne({ id: req.params.idMedico }).exec(function (err, medico) {
 			if (err) {
 				return res.badRequest({ error: err });
