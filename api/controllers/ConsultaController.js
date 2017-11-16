@@ -140,7 +140,19 @@ module.exports = {
 																					if(err){return res.serverError(err);}
 																					else{
 																						var medi = rawResult;
-																						res.view('medico-historia-medica', {medico: Medico, paciente: Paciente, consultas: consultaResult, patologias: respuesta, medicamentos: medi, cirujanos: cirujanoRes, internistas: interRes, nutricionistas: nutriRes});
+																						Antecedente.query(
+																							'SELECT antecedentes.*, paciente.Nombre FROM antecedentes INNER JOIN consulta ON antecedentes.Consulta = consulta.id '+
+																							'INNER JOIN medico ON consulta.Medico = medico.id INNER JOIN paciente ON paciente.id = consulta.Paciente WHERE medico.id = '+ req.params.idMedico  
+																							+ ' AND paciente = '+ req.params.idPaciente + ' GROUP BY paciente.id',
+																							function(err, rawResult){
+																								if(err){return res.serverError(err);}
+																								else{
+																									var antecedente = rawResult;
+																									res.view('medico-historia-medica', {medico: Medico, paciente: Paciente, consultas: consultaResult, patologias: respuesta, medicamentos: medi, cirujanos: cirujanoRes, internistas: interRes, nutricionistas: nutriRes, antecedentes: antecedente});
+																								}
+																							}
+																							)
+																						
 																					}
 																				}
 																			)
