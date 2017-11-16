@@ -20,6 +20,7 @@ module.exports = {
 			Temperatura: req.body.Temperatura, FRespiratoria: req.body.FRespiratoria, 
 			FCardiaca: req.body.FCardiaca, Medico: req.params.idMedico, 
 			Paciente: req.params.idPaciente, Fecha: fecha }, function (err, createdData) {
+				
 			if (err) {
 				return res.badRequest({ error: err });
 			} else {
@@ -52,7 +53,16 @@ module.exports = {
 						}
 					});
 				}
-				res.redirect('/Medico/BuscarPorID/'+req.params.idMedico);
+				console.log(consulta); 
+				console.log("================================");
+				
+				console.log(req.body); 
+				res.redirect('/Medico/BuscarPorID/'+req.params.idMedico)
+				
+				
+			
+			
+				
 			}
 		});
 		
@@ -175,12 +185,25 @@ module.exports = {
 			} else {
 				console.log(paci);
 				paciente = paci;
-				res.view('medico-consulta', { medico: doc, paciente: paciente });
+				Patologia.find().exec(function (err, patologias) { 
+					if (err) { return res.badRequest({error: err});
+				} else {
+					Medicamento.find().exec(function (err, medicamentos) { 
+						if (err) { return res.badRequest({error: err});
+					} else {
+					console.log (patologias);
+					console.log (medicamentos); 
+				
+					
+				res.view('medico-consulta', { medico: doc, paciente: paciente, patologias, medicamentos });
 			};
 		});
 
-
 	}
-
-};
-
+	});
+			}
+});
+			}
+}
+		
+	

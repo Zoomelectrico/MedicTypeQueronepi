@@ -1,4 +1,7 @@
 $(document).ready(function() {
+  $('select').material_select();
+});
+$(document).ready(function() {
   $('.datepicker').pickadate({
     selectMonths: true,
     selectYears: 1000,
@@ -13,4 +16,6 @@ $(document).ready(function() {
   $('.fixed-action-btn.toolbar').openToolbar();
   $('.fixed-action-btn.toolbar').closeToolbar();
   $('.collapsible').collapsible();
+
+
 });
