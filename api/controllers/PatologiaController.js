@@ -11,7 +11,7 @@ module.exports = {
 
     intervaloPatologiasDiagnosticadas: function (req, res) {
         console.log(req.body); 
-       Query =  'select Consulta.fecha, patologia.nombre, COUNT(patologia.nombre) as vecesDiagnosticada' +
+       /*Query =  'select Consulta.fecha, patologia.nombre, COUNT(patologia.nombre) as vecesDiagnosticada' +
        ', count(patologia.nombre) * 100 / (select count(*) from patologias_informe ' + 
        'INNER JOIN patologia on patologia.id = patologias_informe.patologia ' +  
        'WHERE Fecha BETWEEN ' + "'" + req.body.fecha1 + "' AND '" + req.body.fecha2 + "' ) " + ' as porcentaje ' +
@@ -20,7 +20,13 @@ module.exports = {
        ' INNER JOIN patologia on patologias_informe.patologia = patologia.id ' +
        "WHERE FECHA BETWEEN '" + req.body.fecha1 + "' AND '" + req.body.fecha2 + "'" +
         "GROUP BY patologia.nombre;";
-        
+        */
+        Query = "Select patologia.*, COUNT(patologia.nombre) as vecesDiagnosticada from patologia "+
+        "inner join patologias_informe on patologia.id = patologias_informe.Patologia "+
+        "inner join consulta on consulta.id = patologias_informe.Informe "+
+        "where consulta.Fecha BETWEEN '" + req.body.fecha1 + "' AND '" + req.body.fecha2 + "'" +
+        "GROUP BY patologia.nombre;";
+
         console.log(Query); 
         
         
@@ -46,6 +52,7 @@ module.exports = {
     intervaloPatologiasNoDiagnosticadas: function (req, res) {
         console.log(req.body.fecha1); 
         console.log(req.body.fecha2);
+        /*
         Query =  "SELECT patologia.* from patologias_informe " +
         " RIGHT OUTER JOIN  patologia ON patologias_informe.patologia = patologia.id " +
         "LEFT OUTER JOIN consulta ON patologias_informe.informe = consulta.id " +
@@ -54,6 +61,13 @@ module.exports = {
         " RIGHT OUTER JOIN  patologia ON patologias_informe.patologia = patologia.id " +
         " LEFT OUTER JOIN consulta ON patologias_informe.informe = consulta.id " +
         " WHERE Fecha BETWEEN '" + req.body.fecha1+ "' AND '" + req.body.fecha2 + "'); ";
+         */
+         Query = "Select patologia.* from patologia " +
+         "inner join patologias_informe on patologia.id = patologias_informe.Patologia " +
+         "inner join consulta on consulta.id = patologias_informe.Informe " +
+         "where consulta.Fecha NOT BETWEEN '" +req.body.fecha1+ "' AND '" + req.body.fecha2 + "' group by patologia.Nombre";
+
+
          console.log(Query); 
         Consulta.query(
          Query,
