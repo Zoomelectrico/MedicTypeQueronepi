@@ -26,7 +26,7 @@
               <tr>
                 <td><%= patologia.nombre %> </td>
                 <td><%= patologia.vecesDiagnosticada %></td>
-                <td><%= patologia.porcentaje %> </td>
+                <td><%= (patologia.vecesDiagnosticada *100 / totalPatologias.Total) %> </td>
               </tr>
               <%})%>
           </tbody>
